@@ -1,8 +1,16 @@
 const express = require("express")
 const app=express();
 const mongoose = require("mongoose")
+const dotenv= require('dotenv')
+dotenv.config()
+
 const PORT = 5000
-const {MONGOURI} = require('./keys')
+
+const {MONGOURI}= process.env
+
+console.log(MONGOURI)
+
+// const {MONGOURI} = require('./keys')
 
 mongoose.connect(MONGOURI,{useNewUrlParser:true,useUnifiedTopology:true})
 mongoose.connection.on('connected',()=>{
